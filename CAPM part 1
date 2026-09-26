@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class ClinicManager {
+
+// 2D array: 7 days × 6 time slots
+// 0 = Free, 1 = Booked
+static int[][] doctorSchedule = new int[7][6];
+
+// Patient records
+static String[] patientNames = new String[50];
+static int[] patientAges = new int[50];
+static int patientCount = 0;
+
+public static void main(String[] args) {
+
+Scanner sc = new Scanner(System.in);
+int choice;
+
+// Some already booked slots
+doctorSchedule[0][1] = 1; // Monday 10 AM
+doctorSchedule[2][3] = 1; // Wednesday 12 PM
+
+do {
+displayMenu();
