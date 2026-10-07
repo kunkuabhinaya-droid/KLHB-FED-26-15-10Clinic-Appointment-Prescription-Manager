@@ -1,0 +1,24 @@
+System.out.print("Enter your choice: ");
+            choice = sc.nextInt();
+            sc.nextLine();
+            switch (choice) {
+                case 1:
+                    bookAppointment(sc);
+                    break;
+                case 2:
+                    viewSchedule();
+                    break;
+                case 3:
+                    addPatientRecord(sc);
+                    break;
+                case 4:
+                    System.out.println("Exiting Clinic System. Goodbye!");
+                    break;
+                default:
+                    System.out.println("Invalid choice!");
+            }
+        } while (choice != 4);
+        sc.close();
+    }
+
+ 
