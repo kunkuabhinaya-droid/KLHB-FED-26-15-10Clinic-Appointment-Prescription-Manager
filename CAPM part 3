@@ -1,0 +1,28 @@
+ // TYPE 1: No parameter, No return value
+    static void displayMenu() {
+        System.out.println("\n=== CLINIC APPOINTMENT MANAGER ===");
+        System.out.println("1. Book an Appointment");
+        System.out.println("2. View Doctor's Schedule");
+        System.out.println("3. Add Patient Record");
+        System.out.println("4. Exit");
+    }
+    // TYPE 2: Parameter, No return value
+    static void bookAppointment(Scanner sc) {
+        System.out.print("Enter Day (0=Mon, 1=Tue, ... 6=Sun): ");
+        int day = sc.nextInt();
+        System.out.print("Enter Slot (0=9AM, 1=10AM, ... 5=2PM): ");
+        int slot = sc.nextInt();
+ // TYPE 1: No parameter, No return value
+    static void displayMenu() {
+        System.out.println("\n=== CLINIC APPOINTMENT MANAGER ===");
+        System.out.println("1. Book an Appointment");
+        System.out.println("2. View Doctor's Schedule");
+        System.out.println("3. Add Patient Record");
+        System.out.println("4. Exit");
+    }
+    // TYPE 2: Parameter, No return value
+    static void bookAppointment(Scanner sc) {
+        System.out.print("Enter Day (0=Mon, 1=Tue, ... 6=Sun): ");
+        
+
+     
