@@ -1,0 +1,140 @@
+// 2D array: 7 days × 6 time slots
+// 0 = Free, 1 = Booked
+static int[][] doctorSchedule = new int[7][6];
+
+// Patient records
+static String[] patientNames = new String[50];
+static int[] patientAges = new int[50];
+static int patientCount = 0;
+
+public static void main(String[] args) {
+
+    Scanner sc = new Scanner(System.in);
+    int choice;
+
+    // Some already booked slots
+    doctorSchedule[0][1] = 1; // Monday 10 AM
+    doctorSchedule[2][3] = 1; // Wednesday 12 PM
+
+    do {
+        displayMenu();
+
+        System.out.print("Enter your choice: ");
+        choice = sc.nextInt();
+        sc.nextLine();
+
+        switch (choice) {
+
+            case 1:
+                bookAppointment(sc);
+                break;
+
+            case 2:
+                viewSchedule();
+                break;
+
+            case 3:
+                addPatientRecord(sc);
+                break;
+
+            case 4:
+                System.out.println("Exiting Clinic System. Goodbye!");
+                break;
+
+            default:
+                System.out.println("Invalid choice!");
+        }
+
+    } while (choice != 4);
+
+    sc.close();
+}
+
+// TYPE 1: No parameter, No return value
+static void displayMenu() {
+
+    System.out.println("\n=== CLINIC APPOINTMENT MANAGER ===");
+    System.out.println("1. Book an Appointment");
+    System.out.println("2. View Doctor's Schedule");
+    System.out.println("3. Add Patient Record");
+    System.out.println("4. Exit");
+}
+
+// TYPE 2: Parameter, No return value
+static void bookAppointment(Scanner sc) {
+
+    System.out.print("Enter Day (0=Mon, 1=Tue, ... 6=Sun): ");
+    int day = sc.nextInt();
+
+    System.out.print("Enter Slot (0=9AM, 1=10AM, ... 5=2PM): ");
+    int slot = sc.nextInt();
+
+    // Check valid range
+    if (day < 0 || day > 6 || slot < 0 || slot > 5) {
+        System.out.println("Invalid day or slot!");
+        return;
+    }
+
+    // Calling Type 4 method
+    boolean free = checkSlotAvailability(day, slot);
+
+    if (free) {
+        doctorSchedule[day][slot] = 1;
+        System.out.println("Appointment Booked Successfully!");
+    } else {
+        System.out.println("Slot is already occupied!");
+    }
+}
+
+// TYPE 4: Parameter + Return value
+static boolean checkSlotAvailability(int day, int slot) {
+
+    if (doctorSchedule[day][slot] == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// TYPE 1: No parameter, No return value
+static void viewSchedule() {
+
+    String[] days = {
+        "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"
+    };
+
+    System.out.println("\n--- Weekly Schedule ---");
+    System.out.println("0 = Free, 1 = Booked");
+
+    for (int i = 0; i < doctorSchedule.length; i++) {
+
+        System.out.print(days[i] + ": ");
+
+        for (int j = 0; j < doctorSchedule[i].length; j++) {
+            System.out.print(doctorSchedule[i][j] + " ");
+        }
+
+        System.out.println();
+    }
+}
+
+// TYPE 2: Parameter, No return value
+static void addPatientRecord(Scanner sc) {
+
+    if (patientCount >= patientNames.length) {
+        System.out.println("Database is full!");
+        return;
+    }
+
+    System.out.print("Enter Patient Name: ");
+    patientNames[patientCount] = sc.nextLine();
+
+    System.out.print("Enter Patient Age: ");
+    patientAges[patientCount] = sc.nextInt();
+    sc.nextLine();
+
+    System.out.println("Patient Record Saved!");
+    System.out.println("Patient Index: " + patientCount);
+
+    patientCount++;
+}
