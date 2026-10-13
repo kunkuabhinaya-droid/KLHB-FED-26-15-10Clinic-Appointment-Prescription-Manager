@@ -1,0 +1,24 @@
+int day = sc.nextInt();
+System.out.print("Enter Slot (0=9AM, 1=10AM, ... 5=2PM): ");
+int slot = sc.nextInt();
+if (day < 0 || day > 6 || slot < 0 || slot > 5) {
+System.out.println("Invalid day or slot!");
+return;
+}
+boolean free = checkSlotAvailability(day, slot);
+if (free) {
+doctorSchedule[day][slot] = 1;
+System.out.println("Appointment Booked Successfully!");
+} else {
+System.out.println("Slot is already occupied!")
+}
+}
+static boolean checkSlotAvailability(int day, int slot) {
+if (doctorSchedule[day][slot] == 0) {
+return true;
+} else {
+return false;
+ }
+}
+
+  
